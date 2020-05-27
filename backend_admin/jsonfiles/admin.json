@@ -1,5 +1,5 @@
 {
     "id":1,
-    "userName": "test",
-    "userPass": "1234"
+    "adminName": "test",
+    "adminPass": "1234"
 }
