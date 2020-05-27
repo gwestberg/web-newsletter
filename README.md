@@ -1,5 +1,7 @@
 # web-newsletter
+
 Inlämningsuppgift - Vill du ha mitt nyhetsbrev?
+
 Nu skall vi bygga en enkel webbapplikation som samlar information från besökare och sedan gör dem tillgängliga för webbsidans administratör.
 Till denna uppgift så ska du använda dig utav node.js som backend.
 Applikationen skall bestå av en frontend webbsida där användaren kan skapa ett konto samt välja om de vill prenumerera på ditt nyhetsbrev, samt en backend där en administratör ska kunna logga in och se samtliga registrerade användare samt en lista på vilka användare som önskar ett nyhetsbrev.
