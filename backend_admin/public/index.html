@@ -7,10 +7,20 @@
 
 <body>
   <header>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+  <h1>Admin Panel</h1>
+  <p>Welcome, please log in</p>
 </header>
-<button class="redirect">Admin Panel</button>
+
+<form action="/admin">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="password" id="lname" name="lname"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+
+
 
 </body>
 

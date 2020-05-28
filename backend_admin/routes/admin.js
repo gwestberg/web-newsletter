@@ -1,20 +1,74 @@
-var express = require('express');
-var router = express.Router();
-var fs = require('fs');
-var cors = require('cors');
+const express = require('express');
+const router = express.Router();
+const fs = require('fs');
+const cors = require('cors');
 
-/* GET users listing. */
-router.get('/',cors(), function(req, res, next) {
-  
-  fs.readFile("jsonfiles/admin.json",(err,data)=>{
+const bodyParser = require('body-parser');
+let urlEncoderParser = bodyParser.urlencoded({extended: true});
 
-    if(err) throw err;
+//Creates the login for the admin
+router.get('/',cors(), (req, res, next)=> {
 
-    const users = JSON.parse(data);
+  //Skapa ett html-formulär och skicka den i res.send
+  let html ='';
+  html += "<body>";
+        html += `<form action="/admin/panel" method="post" name="adminForm">`;
+        html += `<label for="name">Username:</label><br>`;
+        html += ` <input type="text" name="name" ><br>`;
+        html += ` <label for="pword">Password:</label><br>`;
+        html += `<input type="password "name="pword"><br><br>`;
+        html += `<input type="submit" value="Submit">`;
+        html += "</form> ";
+  html += "</body>";
 
-    res.send(users);
-  });
-});
+    res.send(html);
+
+})
+
+
+//render the admin-panel depending on if the validation succeds or not
+router.post('/panel', urlEncoderParser, (req, res)=> {
+  fs.readFile('jsonfiles/admin.json', (err, data) => {
+    if (err) throw err;
+    let admin = JSON.parse(data);
+    console.log(admin.name, admin.passw);
+    if (req.body.name == admin.name && req.body.pword == admin.passw) {
+
+      fs.readFile('jsonfiles/users.json', (err, data) => {
+        if (err) throw err;
+        let users = JSON.parse(data);
+
+          let html = '';
+          html += "<html>";
+          html += "<body>";
+
+            users.forEach(user => {
+              html += `<div id=${user.id}>`;
+              html += `Id: ${user.id}<br>`;
+              html += `Username: ${user.userName}<br>`;
+              html += `Password: ${user.userPass}<br>`;
+              html += `Email: ${user.email}<br>`;
+
+              if (user.wantsNewsletter === true) {
+                html += `Newsletter: <input type="checkbox" id="${user.id}" name="${user.username}" checked> <br><br>`;
+            } else {
+                html += `Newsletter: <input type="checkbox" id="${user.id}" name="${user.username}"> <br><br>`;
+            }
+
+              html += "</div>";
+          });
+
+          html += "</body>";
+          html += "</html>";
+
+          res.send(html);
+          })
+  }
+  else{
+    res.send("invalid user-info")
+  }
+})
+})
 
 
 module.exports = router;

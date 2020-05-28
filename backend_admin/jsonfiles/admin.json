@@ -1,5 +1,6 @@
-{
-    "id":1,
-    "adminName": "test",
-    "adminPass": "1234"
-}
+
+    {
+        "id":1,
+        "name": "test",
+        "passw": "1234"
+    }

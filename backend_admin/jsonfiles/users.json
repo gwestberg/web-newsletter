@@ -2,7 +2,15 @@
     {
         "id":1,
         "userName": "bella",
-        "userPass": "tifa",
+        "userPass": "penny",
+        "email": "bella@mail.com",
         "wantsNewsletter": true
+    },
+    {
+        "id":2,
+        "userName": "thomas",
+        "userPass": "tifa",
+        "email": "thomas@mail.com",
+        "wantsNewsletter": false
     }
 ]
