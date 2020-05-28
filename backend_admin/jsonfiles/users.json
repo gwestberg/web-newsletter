@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "userName": "bella",
+    "userName": "gabriella",
     "userPass": "penny",
     "email": "bella@mail.com",
     "wantsNewsletter": true
@@ -19,5 +19,12 @@
     "email": "kotte@mail.com",
     "wantsNewsletter": true,
     "id": 3
+  },
+  {
+    "userName": "penny",
+    "userPass": "kattfan",
+    "email": "katt@fan.com",
+    "wantsNewsletter": false,
+    "id": 4
   }
 ]

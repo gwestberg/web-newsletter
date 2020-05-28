@@ -3,13 +3,6 @@ var router = express.Router();
 var fs = require('fs');
 var cors = require('cors');
 
-const bodyParser = require('body-parser');
-router.use(bodyParser.urlencoded({
-  extended: true
-}));
-router.use(bodyParser.json());
-
-// let urlEncoderParser = bodyParser.urlencoded({extended: true});
 
 //get all of the users
 router.get('/',cors(), (req, res, next) =>{
@@ -43,38 +36,50 @@ router.post('/newuser',cors(),(req, res, next) =>{
 
   fs.readFile('jsonfiles/users.json', (err, data) => {
       if (err) throw err;
-      usersInList = JSON.parse(data);
+      let userList = JSON.parse(data);
 
         // find last used Id
-        let lastId = usersInList.length;
+        let lastId = userList.length;
         newUser.id = (lastId + 1);
 
-        usersInList.push(newUser);
+        userList.push(newUser);
 
-        let saveUsers = JSON.stringify(usersInList, null, 2);
+        let saveUsers = JSON.stringify(userList, null, 2);
         fs.writeFile('jsonfiles/users.json', saveUsers, (err,data)=>{
         if (err) throw err;
         });
   })
 });
 
-router.post('/updateuser',cors(),(req, res, next) =>{
-  let newUser = req.body;
 
+router.put('/updateuser/:userId',cors(),(req, res, next) =>{
+  //Get the object sent to the request 
+  let updatedUser = req.body;
+  //Get the url parameter id
+  let userId = req.params.userId
 fs.readFile('jsonfiles/users.json', (err, data) => {
     if (err) throw err;
-    usersInList = JSON.parse(data);
 
-      // find last used Id
-      let lastId = usersInList.length;
-      newUser.id = (lastId + 1);
+    let userList = JSON.parse(data);
+    let user = userList.filter(user =>{
+      return user.id == userId;
+    })[0];
 
-      usersInList.push(newUser);
+    //getting the users values
+    const keys= Object.keys(user);
 
-      let saveUsers = JSON.stringify(usersInList, null, 2);
+      //foreach value, update the value to the one provided
+      keys.forEach(key => {
+         user[key] = updatedUser[key]
+      });
+
+    
+      let saveUsers = JSON.stringify(userList, null, 2);
       fs.writeFile('jsonfiles/users.json', saveUsers, (err,data)=>{
       if (err) throw err;
       });
+      
+    res.send(user);
 })
 });
 

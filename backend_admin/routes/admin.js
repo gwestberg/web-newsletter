@@ -44,9 +44,7 @@ router.post('/panel', urlEncoderParser, (req, res)=> {
 
             users.forEach(user => {
               html += `<div id=${user.id}>`;
-              html += `Id: ${user.id}<br>`;
               html += `Username: ${user.userName}<br>`;
-              html += `Password: ${user.userPass}<br>`;
               html += `Email: ${user.email}<br>`;
 
               if (user.wantsNewsletter === true) {
@@ -65,7 +63,7 @@ router.post('/panel', urlEncoderParser, (req, res)=> {
           })
   }
   else{
-    res.send("invalid user-info")
+    response.sendStatus(401);
   }
 })
 })
