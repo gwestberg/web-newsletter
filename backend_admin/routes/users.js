@@ -1,7 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var fs = require('fs');
+let express = require('express');
+let router = express.Router();
+let fs = require('fs');
 var cors = require('cors');
+let cryptojs = require("crypto-js")
 
 
 //get all of the users
