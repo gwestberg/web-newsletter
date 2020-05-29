@@ -4,7 +4,7 @@ let fs = require('fs');
 var cors = require('cors');
 let cryptojs = require("crypto-js")
 
-
+// TODO:In one of the GETs, decrypt and check the pw
 //get all of the users
 router.get('/',cors(), (req, res, next) =>{
   fs.readFile('jsonfiles/users.json', (err, data) => {
@@ -16,7 +16,8 @@ router.get('/',cors(), (req, res, next) =>{
   })
 });
 
-//Get a user with the :userId (from the url params)
+// TODO: Get a user with the :userId (from the url params)
+
 router.get('/:userid',cors(), (req, res, next) =>{
 
   let id = req.params.userid;
@@ -32,6 +33,7 @@ router.get('/:userid',cors(), (req, res, next) =>{
 
 
 //Post user
+//Encrypt the password!
 router.post('/newuser',cors(),(req, res, next) =>{
     let newUser = req.body;
 

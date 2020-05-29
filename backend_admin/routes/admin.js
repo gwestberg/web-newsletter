@@ -6,6 +6,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 let urlEncoderParser = bodyParser.urlencoded({extended: true});
 
+
+// TODO: Encrypt the admin-password, decrypt it to validate login.
+
 //Creates the login for the admin
 router.get('/',cors(), (req, res, next)=> {
 
@@ -24,6 +27,7 @@ router.get('/',cors(), (req, res, next)=> {
     res.send(html);
 
 })
+
 
 
 //render the admin-panel depending on if the validation succeds or not
