@@ -21,3 +21,19 @@
 .navlinks .links{
   color: white;
 }
+
+
+.registrationForm input{
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.registrationForm label{
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}

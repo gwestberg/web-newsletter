@@ -4,6 +4,9 @@ let fs = require('fs');
 var cors = require('cors');
 let cryptojs = require("crypto-js")
 
+const bodyParser = require('body-parser');
+let urlEncoderParser = bodyParser.urlencoded({extended: true});
+
 // TODO:In one of the GETs, decrypt and check the pw
 //get all of the users
 router.get('/',cors(), (req, res, next) =>{
@@ -30,6 +33,31 @@ router.get('/:userid',cors(), (req, res, next) =>{
     
   })
 });
+
+//Login
+// router.post('/login',urlEncoderParser, (req, res)=> {
+//   fs.readFile('jsonfiles/users.json', (err, data) => {
+//     if (err) throw err;
+//     let users = JSON.parse(data);
+//     users.forEach(user => {
+
+//     console.log(user.userName, user.userPass);
+//     if (req.body.userName == user.userName && req.body.userPass == user.userPass) {
+//       console.log(user);
+//       res.send(user);
+//       // fs.readFile('jsonfiles/users.json', (err, data) => {
+//       //   if (err) throw err;
+//       //   let users = JSON.parse(data);
+//       //     res.send(html);
+//       //     })
+//   }
+//   else{
+//     response.sendStatus(401);
+//   }
+// });
+// })
+// })
+
 
 
 //Post user

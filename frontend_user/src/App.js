@@ -8,11 +8,22 @@ import Register from './components/register';
 import Update from './components/update';
 
 
-function App() {
-  return (
-    <Router>
+export default class App extends React.Component{
+  constructor(props){
+    super(props)
 
+    this.state ={ userLoggedIn: false}
+
+  }
+  render(){
+    return (
+
+      
     <div className="App">
+      <Router>
+
+
+
       <Nav />
       <Switch>
       <Route path="/" exact component={Home}/>
@@ -20,10 +31,11 @@ function App() {
       <Route path="/register" component={Register}/>
       <Route path="/update" component={Update}/>
       </Switch>
-    </div>
+
 
     </Router>
+    </div>
   );
 }
+}
 
-export default App;
