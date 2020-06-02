@@ -28,7 +28,7 @@ export default class Register extends Component {
     const { userName, userPass, email,wantsNewsletter } = this.state;
     alert("You are submitting " + userName +userPass+email+wantsNewsletter);
 
-    axios.post('http://localhost:3000/users/newuser', { 
+    axios.post(`http://localhost:3000/users/newuser`, { 
       userName: userName,
       userPass: userPass,
       email: email,

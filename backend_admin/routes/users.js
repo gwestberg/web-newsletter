@@ -35,28 +35,28 @@ router.get('/:userid',cors(), (req, res, next) =>{
 });
 
 //Login
-// router.post('/login',urlEncoderParser, (req, res)=> {
-//   fs.readFile('jsonfiles/users.json', (err, data) => {
-//     if (err) throw err;
-//     let users = JSON.parse(data);
-//     users.forEach(user => {
+router.post('/login',urlEncoderParser, (req, res)=> {
+  fs.readFile('jsonfiles/users.json', (err, data) => {
+    if (err) throw err;
+    let users = JSON.parse(data);
+    users.forEach(user => {
 
-//     console.log(user.userName, user.userPass);
-//     if (req.body.userName == user.userName && req.body.userPass == user.userPass) {
-//       console.log(user);
-//       res.send(user);
-//       // fs.readFile('jsonfiles/users.json', (err, data) => {
-//       //   if (err) throw err;
-//       //   let users = JSON.parse(data);
-//       //     res.send(html);
-//       //     })
-//   }
-//   else{
-//     response.sendStatus(401);
-//   }
-// });
-// })
-// })
+    console.log(user.userName, user.userPass);
+    if (req.body.userName == user.userName && req.body.userPass == user.userPass) {
+      console.log(user);
+      res.send(user);
+      // fs.readFile('jsonfiles/users.json', (err, data) => {
+      //   if (err) throw err;
+      //   let users = JSON.parse(data);
+      //     res.send(html);
+      //     })
+  }
+  else{
+    response.sendStatus(401);
+  }
+});
+})
+})
 
 
 
