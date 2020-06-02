@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 export default class Register extends Component {
   constructor() {
@@ -16,8 +15,8 @@ export default class Register extends Component {
 
     this.setState({ [e.target.name]: e.target.value });
   }
-  onCheckboxChange =(e) =>{
-    this.setState(initialState =>({
+  onCheckboxChange = (e) => {
+    this.setState(initialState => ({
       wantsNewsletter: !initialState.wantsNewsletter,
     }));
   }
@@ -25,18 +24,23 @@ export default class Register extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     // get our form data out of state
-    const { userName, userPass, email,wantsNewsletter } = this.state;
-    alert("You are submitting " + userName +userPass+email+wantsNewsletter);
+    const { userName, userPass, email, wantsNewsletter } = this.state;
+    alert("You are submitting " + userName + userPass + email + wantsNewsletter);
 
-    axios.post(`http://localhost:3000/users/newuser`, { 
-      userName: userName,
-      userPass: userPass,
-      email: email,
-      wantsNewsletter: wantsNewsletter
-     })
-      .then((result) => {
-        //access the results here....
-      });
+    fetch('http://localhost:3000/users/newuser', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userName: userName,
+        userPass: userPass,
+        email: email,
+        wantsNewsletter: wantsNewsletter
+      })
+    });
+
   }
 
   render() {

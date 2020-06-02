@@ -26,5 +26,19 @@
     "email": "katt@fan.com",
     "wantsNewsletter": false,
     "id": 4
+  },
+  {
+    "userName": "penny",
+    "userPass": "kattfan",
+    "email": "katt@fan.com",
+    "wantsNewsletter": false,
+    "id": 5
+  },
+  {
+    "userName": "gabriella",
+    "userPass": "prutt",
+    "email": "pruuuuuuuuuttar@mail.se",
+    "wantsNewsletter": false,
+    "id": 6
   }
 ]
