@@ -7,6 +7,7 @@ export default class Update extends Component {
         this.state = {
             userid: this.props.sendUser.id,
             username: this.props.sendUser.username,
+            email: this.props.sendUser.email,
             wantsNewsletter: this.props.sendUser.newsletter,
             isLoggedIn: this.props.sendUser.isLoggedIn,
         };
@@ -21,7 +22,7 @@ export default class Update extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         // get our form data out of state
-        const { userid,wantsNewsletter } = this.state;
+        const { userid, wantsNewsletter } = this.state;
         alert("You are submitting " + wantsNewsletter);
 
         fetch('http://localhost:3000/users/updateuser/' + userid, {
@@ -34,21 +35,27 @@ export default class Update extends Component {
                 wantsNewsletter: wantsNewsletter
             })
         })
-        .then(response => response.json())
-        .then((response => {
-            console.log(response);
-            if (response != null) {
-                this.props.sendUserStatus(response.id, response.userName, response.wantsNewsletter,this.state.isLoggedIn);
-                console.log("uppdatering lyckades");
-            } else console.log("uppdatering misslyckades");
-        }));
-
+            .then(response => response.json())
+            .then((response => {
+                console.log(response);
+                if (response != null) {
+                    this.props.sendUserStatus(response.id, response.userName, response.wantsNewsletter, this.state.isLoggedIn);
+                    console.log("uppdatering lyckades");
+                } else console.log("uppdatering misslyckades");
+            }));
     }
+
     render() {
+        const { username, email } = this.state;
         return (
             <div>
                 <div>
                     <form className="updateForm" onSubmit={this.handleSubmit}>
+                        <h1>UserInfo</h1>
+                        <div>
+                            <p>Name: {username}</p>
+                            <p>Email: {email}</p>
+                        </div>
                         <label >
                             Do you want my newsletter?
                         <input
@@ -62,6 +69,7 @@ export default class Update extends Component {
                         </label>
                         <button type="submit">Update</button>
                     </form>
+
                 </div>
             </div>
         );

@@ -81,7 +81,6 @@ router.post('/login', (req, res) => {
 
 
 //Post user
-//Encrypt the password!
 router.post('/newuser', (req, res, next) => {
   let newUser = req.body;
   let username = req.body.userName;
@@ -127,14 +126,7 @@ router.put('/updateuser/:userId', (req, res, next) => {
       return user.id == userId;
     })[0];
 
-    //getting the users values
-    // const keys = Object.keys(user);
-    
     user.wantsNewsletter = updatedUser.wantsNewsletter
-    //foreach value, update the value to the one provided
-    // keys.forEach(key => {
-    // });
-
 
     let saveUsers = JSON.stringify(userList, null, 2);
     fs.writeFile('jsonfiles/users.json', saveUsers, (err, data) => {

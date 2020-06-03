@@ -11,14 +11,16 @@ import './App.css';
         isLoggedIn: false,
         id: "",
         username: "",
+        email: "",
         newsletter: "",
       };
     }
 
-    setLogin = (id, username, newsletter,isLoggedIn) => {
+    setLogin = (id, username, email, newsletter,isLoggedIn) => {
       this.setState({
         isLoggedIn: isLoggedIn,
         id: id,
+        email: email,
         username: username,
         newsletter: newsletter,
       });

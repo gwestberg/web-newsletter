@@ -13,6 +13,7 @@ export default class Login extends Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
 
     handleChange = (e) => {
         //Hanterar uppdateringar
@@ -47,10 +48,11 @@ export default class Login extends Component {
                     this.setState({
                         // userid: response.id,
                         // username: response.userName,
+                        // email: response.email,
                         // wantsNewsletter: response.wantsNewsletter,
                         isLoggedIn: true
                     });
-                    this.props.sendUserStatus(response.id, response.userName, response.wantsNewsletter, this.state.isLoggedIn);
+                    this.props.sendUserStatus(response.id, response.userName, response.email, response.wantsNewsletter, this.state.isLoggedIn);
 
                     console.log("Inloggning lyckades");
                 } else console.log("Inloggning misslyckades");
