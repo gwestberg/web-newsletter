@@ -16,6 +16,8 @@ export default class Register extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+
+
     handleChange = (e) => {
 
         this.setState({ [e.target.name]: e.target.value });
@@ -49,7 +51,7 @@ export default class Register extends React.Component {
     }
     render() {
         if (this.state.isLoggedIn === true) {
-            const { newsletter } = this.state;
+            const { newsletter, userName, email } = this.state;
             return (
                 <div>
                     <label >
