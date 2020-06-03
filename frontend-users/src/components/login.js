@@ -50,6 +50,7 @@ export default class Login extends React.Component {
 
         console.log("Inloggning lyckades");
         this.setState({ loggedIn: true });
+        this.props.getUser({user, loggedIn:true});
         localStorage.setItem("loggedInUser", JSON.stringify(user));
       } else console.log("Inloggning misslyckades");
     

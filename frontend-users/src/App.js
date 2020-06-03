@@ -13,24 +13,36 @@ export default class App extends React.Component{
     super(props)
     this.state ={ 
       user : JSON.parse(localStorage.getItem("loggedInUser")),
-      loggedIn: false
+      // loggedIn: false
     }
   };
 
 
   saveUser = (user) =>{
     console.log(user);
-    this.setState({userId: user.id})
+    this.setState({
+      user: user.user.userid,
+      loggedIn: user.loggedIn
+    })
   };
 
   render(){
     return (
     <div className="App">
+      {/* <button>Logga In</button>
+      <button>Registrera</button>
+      <Login getUser={this.saveUser}/>
+      <br/>
+      <br/>
+      <Register />
+      <Update /> */}
+
+      
       <Router>
       <Nav />
       <Switch>
       <Route path="/" exact component={Home}/>
-      <Route path="/login" component={Login} getUser= {this.saveUser}/>
+      <Route path="/login" component={Login} />
       <Route path="/register" component={Register}/>
       <Route path="/update" component={Update}/>
       </Switch>

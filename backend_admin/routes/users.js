@@ -29,15 +29,26 @@ router.get('/', cors(), (req, res, next) => {
 
 // TODO: Get a user with the :userId (from the url params)
 
-router.get('/:userid', cors(), (req, res, next) => {
+router.get('/:userid', (req, res, next) => {
 
   let id = req.params.userid;
   fs.readFile('jsonfiles/users.json', (err, data) => {
     if (err) throw err;
     let users = JSON.parse(data);
 
+    users.forEach(user => {
+      if (user.id == id) {
+        console.log(user);
+      }
+    });
+
     const user = users.filter(x => x.id == id)
-    res.send(user);
+    
+    res.send(userTosend= {
+      userName: user.userName,
+      email: user.email,
+      wantsNewsletter: user.wantsNewsletter
+    });
 
   })
 });
