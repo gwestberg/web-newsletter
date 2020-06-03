@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Login from './components/login';
 import Register from './components/register';
-import Update from './components/update';
 import './App.css';
 
   export default class App extends Component {
@@ -15,7 +14,7 @@ import './App.css';
       };
     }
   
-    setLogin = (isLoggedIn, id, username, newsletter) => {
+    setLogin = (id, username, newsletter,isLoggedIn) => {
       this.setState({
         isLoggedIn: isLoggedIn,
         id: id,
@@ -28,9 +27,8 @@ import './App.css';
       return (
         <div className="App">
           <h1>Newsletter</h1>
-          <Login isLoggedIn={this.state.isLoggedIn} sendUserStatus={this.setLogin.bind(this)}
-          />
-          <Register />
+          <Login isLoggedIn={this.state.isLoggedIn} sendUserStatus={this.setLogin.bind(this)}/>
+          <Register isLoggedIn={this.state.isLoggedIn} sendUserStatus={this.setLogin.bind(this)}/>
         </div>
       );
     }
