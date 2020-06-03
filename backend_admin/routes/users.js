@@ -61,8 +61,7 @@ router.post('/login', (req, res) => {
           });
       }
     });
-    res.send("null");
-
+    // res.send("null");
   })
 })
 

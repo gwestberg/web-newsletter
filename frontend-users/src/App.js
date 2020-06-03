@@ -13,13 +13,14 @@ export default class App extends React.Component{
     super(props)
     this.state ={ 
       user : JSON.parse(localStorage.getItem("loggedInUser")),
+      loggedIn: false
     }
   };
 
 
   saveUser = (user) =>{
     console.log(user);
-    this.setState({userId: user})
+    this.setState({userId: user.id})
   };
 
   render(){

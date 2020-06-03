@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 
 export default class Register extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       userName: '',
       userPass: '',
       email: '',
       wantsNewsletter: false,
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onChange = (e) => {
+  handleChange = (e) => {
 
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -21,7 +23,7 @@ export default class Register extends Component {
     }));
   }
 
-  onSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     // get our form data out of state
     const { userName, userPass, email, wantsNewsletter } = this.state;
@@ -46,27 +48,27 @@ export default class Register extends Component {
   render() {
     const { userName, userPass, email, wantsNewsletter } = this.state;
     return (
-      <form className="registrationForm" onSubmit={this.onSubmit}>
+      <form className="registrationForm" onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="userName"
           placeholder="Enter username..."
           value={userName}
-          onChange={this.onChange}
+          onChange={this.handleChange}
         />
         <input
           type="password"
           name="userPass"
           placeholder="Enter password..."
           value={userPass}
-          onChange={this.onChange}
+          onChange={this.handleChange}
         />
         <input
           type="text"
           name="email"
           placeholder="Enter email..."
           value={email}
-          onChange={this.onChange}
+          onChange={this.handleChange}
         />
         <label>
           Newsletter?
@@ -84,90 +86,3 @@ export default class Register extends Component {
   }
 }
 
-
-// import React, { Component } from 'react';
-// // import axios from 'axios'
-
-// export default class Register extends Component {
-
-//   constructor(props){
-//     super(props);
-//     this.state ={
-//       userName: '',
-
-//     }
-
-//   }
-
-//   ChangeHandler = (event) => {
-//     let nam = event.target.username;
-//     let val = event.target.value;
-//     this.setState({[nam]: val});
-//   }
-
-//   SubmitHandler = (event) => {
-//     event.preventDefault();
-//     const{userName} = this.state;
-//     // this.setState({
-//     //   userName: userName
-//     // });
-//     alert("You are submitting " + userName);
-
-//   }
-
-//   render(){
-//     const { userName } = this.state;
-//     return (
-//       <div className="Register">
-//       <h3>Register Page</h3>
-//       <form className="registrationForm" onSubmit={this.SubmitHandler}>
-//         <label>
-//           <input 
-//           type="text"
-//           name="userName"
-//           id="userName"
-//           placeholder="Enter username..." 
-//           value={userName}
-//           onChange={this.ChangeHandler}
-//           />
-
-//         </label>
-//         {/* <label>
-//           <input 
-//           type="text" 
-//           name="email"
-//           id="email"
-//           placeholder="Enter email..." 
-//           value={this.state.email}
-//           onChange={this.ChangeHandler}
-//           >
-//           </input>
-//         </label>
-
-//         <label>
-//           <input 
-//           type="password" 
-//           name="userPass"
-//           id="userPass"
-//           placeholder="Enter password..." 
-//           value={this.state.userPass}
-//           />
-//         </label>
-
-//         <label>
-//           Newsletter?
-//           <input 
-//           type="checkbox" 
-//           name="newsletter"
-//           id="newsletter"
-//           value={this.state.wantsNewsletter}
-//           onChange={this.ChangeHandler}
-//           />
-//         </label> */}
-
-//         <input type="submit" value="Submit"/>
-//       </form>
-//     </div>
-//   );
-// }
-// }

@@ -10,13 +10,14 @@ export default class Login extends React.Component {
       userid:'',
       loggedIn: false
     };
-    
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   //fångar upp förändringarna i formuläret
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
   //Hanterar knapptrycket
   handleSubmit = (e) => {
     //förhindrar att sidan laddas om
@@ -47,22 +48,19 @@ export default class Login extends React.Component {
           newsletter: response.wantsNewsletter,
         };
 
-        localStorage.setItem("userLoggedIn", JSON.stringify(user));
-
         console.log("Inloggning lyckades");
         this.setState({ loggedIn: true });
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
       } else console.log("Inloggning misslyckades");
     
     }
     
     ));
-    // .then(data => this.props.getUser(data.id));
-
-  }
+  };
   
   render() {
 
-    const { userName, userPass, loggedIn } = this.state;
+    const { userName, userPass } = this.state;
     return (
         <form className="loginForm" onSubmit={this.handleSubmit}>
           <input
