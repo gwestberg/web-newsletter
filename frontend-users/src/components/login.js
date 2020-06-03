@@ -8,15 +8,18 @@ export default class Login extends React.Component {
       userName: '',
       userPass: '',
       userid:'',
+      loggedIn: false
     };
     
   }
 
-  onChange = (e) => {
-
+  //fångar upp förändringarna i formuläret
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
-  onSubmit = (e) => {
+  //Hanterar knapptrycket
+  handleSubmit = (e) => {
+    //förhindrar att sidan laddas om
     e.preventDefault();
     // get our form data out of state
     const { userName, userPass } = this.state;
@@ -33,31 +36,48 @@ export default class Login extends React.Component {
         userPass: userPass
       })
     })
-
     .then(response => response.json())
-    .then(data => console.log(data));
-    // .then(data => this.setState({ userid: data.id }));
+    .then((response => {
+      console.log(response);
+      if (response != null)
+      {
+        var user = {
+          userid: response.id,
+          username: response.userName,
+          newsletter: response.wantsNewsletter,
+        };
+
+        localStorage.setItem("userLoggedIn", JSON.stringify(user));
+
+        console.log("Inloggning lyckades");
+        this.setState({ loggedIn: true });
+      } else console.log("Inloggning misslyckades");
+    
+    }
+    
+    ));
+    // .then(data => this.props.getUser(data.id));
 
   }
   
   render() {
 
-    const { userName, userPass } = this.state;
+    const { userName, userPass, loggedIn } = this.state;
     return (
-        <form className="loginForm" onSubmit={this.onSubmit}>
+        <form className="loginForm" onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="userName"
             placeholder="Enter username..."
             value={userName}
-            onChange={this.onChange}
+            onChange={this.handleChange}
           />
           <input
             type="password"
             name="userPass"
             placeholder="Enter password..."
             value={userPass}
-            onChange={this.onChange}
+            onChange={this.handleChange}
           />
           <button type="submit">Submit</button>
         </form>    

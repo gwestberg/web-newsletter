@@ -2,10 +2,17 @@ import React from 'react';
 // import './App.css';
 import { Link } from 'react-router-dom';
 
-export default function Nav() {
+export default class Nav extends React.Component{
+  constructor(props) {
+    super(props)
+    };
+    
+  render(){
   return (
     <div className="nav">
-      <h3>Menu</h3>
+      <Link className= "links" to='/'>
+      <h2> Menu </h2>
+      </Link>
       <ul className="navlinks">
         <Link className= "links" to='/login'>
           <li>Login</li>
@@ -20,4 +27,5 @@ export default function Nav() {
       </ul>
     </div>
   );
+}
 }

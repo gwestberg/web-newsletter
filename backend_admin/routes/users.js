@@ -52,9 +52,16 @@ router.post('/login', (req, res) => {
       console.log(user.userName, user.userPass);
       if (req.body.userName == user.userName && req.body.userPass == user.userPass) {
         console.log(user);
-        res.send(user);
+        res.send(
+          user= { 
+            id: user.id,
+            userName: user.userName,
+            email: user.email,
+            wantsNewsletter: user.wantsNewsletter
+          });
       }
     });
+    res.send("null");
 
   })
 })

@@ -11,28 +11,28 @@ import Update from './components/update';
 export default class App extends React.Component{
   constructor(props){
     super(props)
+    this.state ={ 
+      user : JSON.parse(localStorage.getItem("loggedInUser")),
+    }
+  };
 
-    this.state ={ userLoggedIn: false}
 
-  }
+  saveUser = (user) =>{
+    console.log(user);
+    this.setState({userId: user})
+  };
+
   render(){
     return (
-
-      
     <div className="App">
       <Router>
-
-
-
       <Nav />
       <Switch>
       <Route path="/" exact component={Home}/>
-      <Route path="/login" component={Login}/>
+      <Route path="/login" component={Login} getUser= {this.saveUser}/>
       <Route path="/register" component={Register}/>
       <Route path="/update" component={Update}/>
       </Switch>
-
-
     </Router>
     </div>
   );
