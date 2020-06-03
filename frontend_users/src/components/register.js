@@ -6,8 +6,9 @@ export default class Register extends React.Component {
         super(props);
         this.state = {
             userid: "",
-            username: "",
-            password: "",
+            userName: "",
+            email: "",
+            userPass: "",
             wantsNewsletter: false,
             isLoggedIn: false,
         };

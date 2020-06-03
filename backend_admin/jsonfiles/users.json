@@ -40,5 +40,17 @@
     "email": "pruuuuuuuuuttar@mail.se",
     "wantsNewsletter": false,
     "id": 6
+  },
+  {
+    "email": "dumbo@dmail.de",
+    "wantsNewsletter": true,
+    "id": 7
+  },
+  {
+    "userName": "deedee",
+    "userPass": "dexter",
+    "email": "lab@oratory.cn",
+    "wantsNewsletter": false,
+    "id": 8
   }
 ]
