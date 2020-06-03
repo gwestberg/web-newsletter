@@ -30,7 +30,7 @@ export default class Update extends React.Component {
           email: data.email,
           wantsNewsletter: data.wantsNewsletter
         })
-        // this.props.translatedText(data.responseData.translatedText);
+
       })
 
       .catch(err => {
