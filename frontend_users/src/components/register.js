@@ -10,7 +10,7 @@ export default class Register extends React.Component {
             email: "",
             userPass: "",
             wantsNewsletter: false,
-            isLoggedIn: false,
+            isLoggedIn: this.props.isLoggedIn,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,7 +50,7 @@ export default class Register extends React.Component {
 
     }
     render() {
-        if (this.state.isLoggedIn === true) {
+        if (this.props.isLoggedIn === true) {
             const { newsletter, userName, email } = this.state;
             return (
                 <div>
