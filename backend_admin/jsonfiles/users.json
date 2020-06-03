@@ -4,7 +4,7 @@
     "userName": "gabriella",
     "userPass": "penny",
     "email": "bella@mail.com",
-    "wantsNewsletter": true
+    "wantsNewsletter": false
   },
   {
     "id": 2,
@@ -40,11 +40,6 @@
     "email": "pruuuuuuuuuttar@mail.se",
     "wantsNewsletter": false,
     "id": 6
-  },
-  {
-    "email": "dumbo@dmail.de",
-    "wantsNewsletter": true,
-    "id": 7
   },
   {
     "userName": "deedee",

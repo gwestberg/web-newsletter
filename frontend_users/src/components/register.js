@@ -10,7 +10,6 @@ export default class Register extends React.Component {
             email: "",
             userPass: "",
             wantsNewsletter: false,
-            isLoggedIn: this.props.isLoggedIn,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +21,7 @@ export default class Register extends React.Component {
 
         this.setState({ [e.target.name]: e.target.value });
     }
+    
     onCheckboxChange = (e) => {
         this.setState(initialState => ({
             wantsNewsletter: !initialState.wantsNewsletter,
@@ -50,63 +50,44 @@ export default class Register extends React.Component {
 
     }
     render() {
-        if (this.props.isLoggedIn === true) {
-            const { newsletter, userName, email } = this.state;
-            return (
-                <div>
-                    <label >
-                        Do you want my newsletter?
-                        <input
-                            type="checkbox"
-                            name="newsletter"
-                            value={newsletter}
-                            id="newsletter"
-                            // bevakar förändringen
-                            onChange={this.handleNewsletterChange}
-                        />
-                    </label>
-                </div>
-            );
-        }
-        else {
-            const { userName, userPass, email, wantsNewsletter } = this.state;
-            return (
-                <form className="registrationForm" onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        name="userName"
-                        placeholder="Enter username..."
-                        value={userName}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="password"
-                        name="userPass"
-                        placeholder="Enter password..."
-                        value={userPass}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="email"
-                        placeholder="Enter email..."
-                        value={email}
-                        onChange={this.handleChange}
-                    />
-                    <label>
-                        Newsletter?
+        const { userName, userPass, email, wantsNewsletter } = this.state;
+        return (
+            <form className="registrationForm" onSubmit={this.handleSubmit}>
+                <input
+                    type="text"
+                    name="userName"
+                    placeholder="Enter username..."
+                    value={userName}
+                    onChange={this.handleChange}
+                />
+                <input
+                    type="password"
+                    name="userPass"
+                    placeholder="Enter password..."
+                    value={userPass}
+                    onChange={this.handleChange}
+                />
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Enter email..."
+                    value={email}
+                    onChange={this.handleChange}
+                />
+                <label>
+                    Newsletter?
                  <input
-                            type="checkbox"
-                            name="newsletter"
-                            id="newsletter"
-                            value={wantsNewsletter}
-                            onChange={this.onCheckboxChange}
-                        />
-                    </label>
-                    <button type="submit">Register</button>
-                </form>
-            );
+                        type="checkbox"
+                        name="newsletter"
+                        id="newsletter"
+                        value={wantsNewsletter}
+                        onChange={this.onCheckboxChange}
+                    />
+                </label>
+                <button type="submit">Register</button>
+            </form>
+        );
 
-        }
     }
+
 }

@@ -6,6 +6,7 @@ var cors = require('cors');
 router.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "*");
   next();
 });
 
@@ -46,6 +47,7 @@ router.get('/:userid', (req, res, next) => {
     
     res.send(userTosend= {
       userName: user.userName,
+      userPass: user.userPass,
       email: user.email,
       wantsNewsletter: user.wantsNewsletter
     });
@@ -112,7 +114,7 @@ router.post('/newuser', (req, res, next) => {
 });
 
 
-router.put('/updateuser/:userId', cors(), (req, res, next) => {
+router.put('/updateuser/:userId', (req, res, next) => {
   //Get the object sent to the request 
   let updatedUser = req.body;
   //Get the url parameter id
@@ -126,12 +128,12 @@ router.put('/updateuser/:userId', cors(), (req, res, next) => {
     })[0];
 
     //getting the users values
-    const keys = Object.keys(user);
-
+    // const keys = Object.keys(user);
+    
+    user.wantsNewsletter = updatedUser.wantsNewsletter
     //foreach value, update the value to the one provided
-    keys.forEach(key => {
-      user[key] = updatedUser[key]
-    });
+    // keys.forEach(key => {
+    // });
 
 
     let saveUsers = JSON.stringify(userList, null, 2);

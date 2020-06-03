@@ -9,7 +9,7 @@ export default class Login extends Component {
             username: "",
             password: "",
             wantsNewsletter: false,
-            isLoggedIn: false,
+            isLoggedIn: this.props.isLoggedIn,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -50,14 +50,12 @@ export default class Login extends Component {
                         // wantsNewsletter: response.wantsNewsletter,
                         isLoggedIn: true
                     });
-                    this.props.sendUserStatus(response.id, response.userName, response.wantsNewsletter,this.state.isLoggedIn);
+                    this.props.sendUserStatus(response.id, response.userName, response.wantsNewsletter, this.state.isLoggedIn);
 
                     console.log("Inloggning lyckades");
                 } else console.log("Inloggning misslyckades");
 
-            }
-
-            ));
+            }));
     }
 
     onLogout = () => {
@@ -67,6 +65,7 @@ export default class Login extends Component {
             isLoggedIn: false,
         });
         this.props.sendUserStatus(this.state.isLoggedIn);
+        window.location.reload(false);
     };
 
     render() {
