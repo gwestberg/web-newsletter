@@ -56,9 +56,17 @@ router.post('/panel', urlEncoderParser, (req, res)=> {
             } else {
                 html += `Newsletter: <input type="checkbox" id="${user.id}" name="${user.username}"> <br><br>`;
             }
-
-              html += "</div>";
+            html += "</div>";
           });
+          users.forEach(user => {
+            if (user.wantsNewsletter === true) {
+              html += `<br/><br/>`;
+              html += `<div>`;
+              html += `Email: ${user.email}, `;
+              html += "</div>";
+            } 
+          });
+         
 
           html += "</body>";
           html += "</html>";
