@@ -40,5 +40,19 @@
     "email": "lab@oratory.cn",
     "wantsNewsletter": false,
     "id": 8
+  },
+  {
+    "userName": "kroatien",
+    "userPass": "somecountry",
+    "email": "croatia@country.hr",
+    "wantsNewsletter": true,
+    "id": 7
+  },
+  {
+    "userName": "kreta",
+    "userPass": "gyros",
+    "email": "kreta@grekland.gr",
+    "wantsNewsletter": false,
+    "id": 8
   }
 ]

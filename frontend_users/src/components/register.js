@@ -29,7 +29,7 @@ export default class Register extends React.Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         // get our form data out of state
         const { userName, userPass, email, wantsNewsletter } = this.state;
 
@@ -45,7 +45,7 @@ export default class Register extends React.Component {
                 email: email,
                 wantsNewsletter: wantsNewsletter
             })
-        });
+        }).then(alert("registration has been sent, try to log in"));
 
     }
     render() {
