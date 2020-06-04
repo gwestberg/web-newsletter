@@ -57,8 +57,8 @@ router.post('/panel', urlEncoderParser, (req, res)=> {
                 html += `Newsletter: <input type="checkbox" id="${user.id}" name="${user.username}" disabled> <br><br>`;
             }
             html += "</div>";
-            html += `<br/><br/>`;
           });
+          html += `<br/><br/>`;
           html += `<div>`;
           html += `Email-list: <br/>`;
           users.forEach(user => {
