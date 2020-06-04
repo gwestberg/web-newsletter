@@ -52,19 +52,20 @@ router.post('/panel', urlEncoderParser, (req, res)=> {
               html += `Email: ${user.email}<br>`;
 
               if (user.wantsNewsletter === true) {
-                html += `Newsletter: <input type="checkbox" id="${user.id}" name="${user.username}" checked> <br><br>`;
+                html += `Newsletter: <input type="checkbox" id="${user.id}" name="${user.username}" checked disabled> <br><br>`;
             } else {
-                html += `Newsletter: <input type="checkbox" id="${user.id}" name="${user.username}"> <br><br>`;
+                html += `Newsletter: <input type="checkbox" id="${user.id}" name="${user.username}" disabled> <br><br>`;
             }
             html += "</div>";
+            html += `<br/><br/>`;
           });
+          html += `<div>`;
+          html += `Email-list: <br/>`;
           users.forEach(user => {
             if (user.wantsNewsletter === true) {
-              html += `<br/><br/>`;
-              html += `<div>`;
-              html += `Email: ${user.email}, `;
-              html += "</div>";
+              html += `${user.email}, `;
             } 
+            html += "</div>";
           });
          
 
