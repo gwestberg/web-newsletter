@@ -52,6 +52,8 @@ export default class Register extends React.Component {
     render() {
         const { userName, userPass, email, wantsNewsletter } = this.state;
         return (
+            <label >
+            <div className="registerheader">Register</div>
             <form className="registrationForm" onSubmit={this.handleSubmit}>
                 <input
                     type="text"
@@ -85,7 +87,9 @@ export default class Register extends React.Component {
                     />
                 </label>
                 <button type="submit">Register</button>
+                
             </form>
+            </label>
         );
 
     }

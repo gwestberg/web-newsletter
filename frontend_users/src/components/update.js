@@ -67,6 +67,7 @@ export default class Update extends Component {
                                 onChange={this.onCheckboxChange}
                             />
                         </label>
+                        <br/>
                         <button type="submit">Update</button>
                     </form>
 

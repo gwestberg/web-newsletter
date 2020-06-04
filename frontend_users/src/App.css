@@ -1,3 +1,34 @@
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.loginheader{
+  margin-left: 1%;
+  font-size: 30px;
+}
+.loginform{
+  margin: 3% 1%;
+}
+.loginform input{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.registerheader{
+  margin-left: 1%;
+  margin-top: 25%;
+  font-size: 30px;
+}
+.registrationForm{
+  margin: 3% 1%;
+}
+.registrationForm input{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }

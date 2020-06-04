@@ -46,10 +46,6 @@ export default class Login extends Component {
                 console.log(response);
                 if (response != null) {
                     this.setState({
-                        // userid: response.id,
-                        // username: response.userName,
-                        // email: response.email,
-                        // wantsNewsletter: response.wantsNewsletter,
                         isLoggedIn: true
                     });
                     this.props.sendUserStatus(response.id, response.userName, response.email, response.wantsNewsletter, this.state.isLoggedIn);
@@ -64,6 +60,8 @@ export default class Login extends Component {
         this.setState({
             id: "",
             newsletter: "",
+            username: "",
+            email: "",
             isLoggedIn: false,
         });
         this.props.sendUserStatus(this.state.isLoggedIn);
@@ -84,7 +82,9 @@ export default class Login extends Component {
             // utloggad användare
             const { username, password } = this.state;
             return (
-                <form className="login-form" onSubmit={this.handleSubmit}>
+                <div>
+                <div className="loginheader">Login</div>
+                <form className="loginform" onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         name="username"
@@ -106,6 +106,7 @@ export default class Login extends Component {
                         Login
           </button>
                 </form>
+                </div>
             );
         }
     }
