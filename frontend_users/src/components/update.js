@@ -23,7 +23,6 @@ export default class Update extends Component {
         e.preventDefault();
         // get our form data out of state
         const { userid, wantsNewsletter } = this.state;
-        alert("You are submitting " + wantsNewsletter);
 
         fetch('http://localhost:3000/users/updateuser/' + userid, {
             method: 'PUT',
@@ -40,8 +39,9 @@ export default class Update extends Component {
                 console.log(response);
                 if (response != null) {
                     this.props.sendUserStatus(response.id, response.userName, response.wantsNewsletter, this.state.isLoggedIn);
-                    console.log("uppdatering lyckades");
-                } else console.log("uppdatering misslyckades");
+                    alert("update was successful");
+                } 
+                else alert("update was unsuccessful");
             }));
     }
 

@@ -32,7 +32,6 @@ export default class Register extends React.Component {
         e.preventDefault();
         // get our form data out of state
         const { userName, userPass, email, wantsNewsletter } = this.state;
-        alert("You are submitting " + userName + userPass + email + wantsNewsletter);
 
         fetch('http://localhost:3000/users/newuser', {
             method: 'POST',
